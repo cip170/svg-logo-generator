@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const setShape = requiew("./lib/shapes.js");
+const setShape = requiew("./lib/setShape.js");
 
 
 const prompts = [
