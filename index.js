@@ -1,44 +1,68 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const setShape = requiew("./lib/setShape.js");
+const {Circle, Square, Triangle } = require('./lib/shapes');
+const inquirer = require('inquirer');
+const SVG = require('./lib/svg')
+const {writeFile} = require('fs/promises')
+ 
+function init() {
+    inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'characters',
+            message: 'Please Enter up to 3 characters',
+            validate: function(input){
+                if(input.length > 3){
+                    return "Please do not enter more than 3 characters"
+                } else {
+                    return true;
+                }
+            },
+        },
+        {
+            type: 'input',
+            name: 'textColor',
+            message: 'Please enter a colour for your text',
+        },
+      
+        {
+            type: 'list',
+            name: 'shape',
+            message: 'Please enter a shape from the list',
+            choices: ["Circle", "Square", "Triangle"],
+        },
+        {
+            type: 'input',
+            name: 'shapeColor',
+            message: 'Please enter a colour for the shape',
+        },
+   
+    ]).then(({characters, textColor, shape, shapeColor})=>{
+        let shapeType;
+        switch (shape) {
+            case 'circle':
+                shapeType = new Circle()
+                break;
 
+            case 'square':
+                shapeType = new Square()
+                break;
 
-const prompts = [
-    {
-      type: "input",
-      name: "logoName",
-      message: "Please enter 1-3 characters",
-    },
-    {
-      type: "input",
-      name: "textColour",
-      message: `Please enter a colour for the text`,
-    },
-    {
-      type: "input",
-      name: "logoColor",
-      message: `Please enter a color for the shape`,
-    },
-    {
-      type: "list",
-      name: "logoShape",
-      message: `Please choose a shape for the logo`,
-      choices: ["Circle", "Triangle", "Square"],
-    },
-  ];
-
-  function createLogo(response) {
-    const svg = setShape(response);
-    fs.writeFile(fileName, svg, ()=> console.log('Generated logo.svg'));
-}
-
-  function init() {
-    inquirer.prompt(prompts)
-    .then((response) => {createLogo(response);
+            default:
+            case 'triangle':
+                shapeType = new Triangle()
+                break;
+        }
+        shapeType.setColor(shapeColor);
+        const svg = new SVG();
+        svg.setTextColor(textColor, characters);
+        svg.setShape(shapeType);
+        return writeFile('logo.svg', svg.render())
+    }).then(()=>{
+        console.log('Generated logo.svg');
+    }).catch((error)=>{
+        console.log(error);
     })
-    .catch(err => {
-        console.log(err)
-    });
 }
 
 init();
+
+module.exports = {};
