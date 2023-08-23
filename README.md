@@ -41,6 +41,7 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ![Screenshot (542)](https://github.com/cip170/svg-logo-generator/assets/134829009/0f5658c3-5f81-405e-9779-2750f5de1cc2)
 
 ## Video Walkthrough
+![link](https://drive.google.com/file/d/1-PI3dN9nsgIpXUsUfdL63DegIL-OUHr4/view?usp=drive_link)
 
 ## Installation
 
@@ -53,4 +54,4 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ## Usage
 1. Open index.js in the terminal and run 'node index.js'.
 2. Follow and answer the prompts
-3. View your svg in the logo.svg file and open it a web browser to view
+3. View your svg in the logo.svg file and open in a web browser to view
