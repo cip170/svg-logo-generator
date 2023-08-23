@@ -41,7 +41,7 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ![Screenshot (542)](https://github.com/cip170/svg-logo-generator/assets/134829009/0f5658c3-5f81-405e-9779-2750f5de1cc2)
 
 ## Video Walkthrough
-(https://drive.google.com/file/d/1-PI3dN9nsgIpXUsUfdL63DegIL-OUHr4/view?usp=drive_link)
+https://drive.google.com/file/d/1-PI3dN9nsgIpXUsUfdL63DegIL-OUHr4/view?usp=drive_link
 
 ## Installation
 
